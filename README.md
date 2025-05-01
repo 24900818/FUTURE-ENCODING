@@ -34,5 +34,22 @@ We use this categorical data encoding technique when the features are nominal(do
       import pandas as pd
       df=pd.read_csv("Encoding Data.csv")
       df
+
+  ![image](https://github.com/user-attachments/assets/d975804c-45df-46e8-83b4-863bcd986e63)
+  
+      from sklearn.preprocessing import LabelEncoder,OrdinalEncoder
+      pm=['Hot','Warm','Cold']
+      e1=OrdinalEncoder(categories=[pm])
+      e1.fit_transform(df[["ord_2"]])
+
+  ![image](https://github.com/user-attachments/assets/1fe3f546-aa13-4a24-a955-cd19f21cbc8c)
+  
+      df['bo2']=e1.fit_transform(df[["ord_2"]])
+      df
+      
+  ![image](https://github.com/user-attachments/assets/7ec618dd-a934-4dc5-906e-e7e24bc34ab5)
+
+      
+
 # RESULT:
        # INCLUDE YOUR RESULT HERE
