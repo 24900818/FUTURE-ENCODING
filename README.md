@@ -55,14 +55,14 @@ We use this categorical data encoding technique when the features are nominal(do
       dfc
  ![image](https://github.com/user-attachments/assets/09c0198a-eccd-46a2-8c3d-3e397126b5f0)
  
-      from sklearn.preprocessing import OneHotEncoder
-      ohe=OneHotEncoder(sparse_output=False)
-      df2=df.copy()
-      enc=pd.DataFrame(ohe.fit_transform(df2[["nom_0"]]))
+        from sklearn.preprocessing import OneHotEncoder
+        ohe=OneHotEncoder(sparse_output=False)
+        df2=df.copy()
+        enc=pd.DataFrame(ohe.fit_transform(df2[["nom_0"]]))
 
 
-      df2=pd.concat([df2,enc],axis=1)
-      df2
+       df2=pd.concat([df2,enc],axis=1)
+       df2
 
  ![image](https://github.com/user-attachments/assets/de11795f-a8e2-4414-8d1f-298e2ed65600)
 
@@ -73,6 +73,9 @@ We use this categorical data encoding technique when the features are nominal(do
       df=pd.read_csv("data.csv")
       df
 
+
+
+  
       be=BinaryEncoder()
       nd=be.fit_transform(df['Ord_2'])
       df
@@ -81,77 +84,105 @@ We use this categorical data encoding technique when the features are nominal(do
       dfb=pd.concat([df,nd],axis=1)
       dfb
   ![image](https://github.com/user-attachments/assets/6dbd119c-f3bc-4ef2-8758-8c690a073e76)
-       from category_encoders import TargetEncoder
-       te=TargetEncoder()
-       CC=df.copy()
-       new=te.fit_transform(X=CC["City"],y=CC["Target"])
-       CC=pd.concat([CC,new],axis=1)
-       CC 
+         from category_encoders import TargetEncoder
+         te=TargetEncoder()
+         CC=df.copy()
+         new=te.fit_transform(X=CC["City"],y=CC["Target"])
+         CC=pd.concat([CC,new],axis=1)
+         CC 
   ![image](https://github.com/user-attachments/assets/e4784643-68d6-41ec-932d-1ea12bf6378c)
-      from scipy import stats
-      import numpy as np
-      df=pd.read_csv("Data_to_Transform.csv")
-      df
+         from scipy import stats
+         import numpy as np
+         df=pd.read_csv("Data_to_Transform.csv")
+         df
        
   ![image](https://github.com/user-attachments/assets/f7c38c31-2edd-4881-837d-c8dcf2e3ea0a)
        
-      df.skew()
+         df.skew()
+         
   ![image](https://github.com/user-attachments/assets/d370207e-e533-4c54-a804-00b4c3508d7b)
-      np.log(df["Highly Positive Skew"])
+  
+         np.log(df["Highly Positive Skew"])
+         
   ![image](https://github.com/user-attachments/assets/df32c4a4-3a97-46b0-8bfa-bd322d83c440)
 
-      np.reciprocal(df["Moderate Positive Skew"])
+         np.reciprocal(df["Moderate Positive Skew"])
+         
   ![image](https://github.com/user-attachments/assets/0264d80d-da88-4513-a739-074ad30b50e9)
        
-      np.sqrt(df["Highly Positive Skew"])
+         np.sqrt(df["Highly Positive Skew"])
+         
   ![image](https://github.com/user-attachments/assets/91682c94-f3f4-4c0a-ac2f-fa34ab2ae7d1)
-      np.square(df["Highly Positive Skew"])
+         np.square(df["Highly Positive Skew"])
+         
   ![image](https://github.com/user-attachments/assets/4b865ff1-1c51-4ab9-aeee-bf14d3fd194a)
-      df["Highly Positive Skew_boxcox"], parameters=stats.boxcox(df["Highly Positive Skew"])
-      df
+  
+         df["Highly Positive Skew_boxcox"], parameters=stats.boxcox(df["Highly Positive Skew"])
+         df
+         
   ![image](https://github.com/user-attachments/assets/fe51401f-f87e-484a-b5c1-c7ee0dbaa25d)
-      df.skew()
+  
+         df.skew()
+         
   ![image](https://github.com/user-attachments/assets/1f6cc64b-7822-4202-a1ad-4d1854ff4e37)
-      df["Highly Negative Skew_yeojohnson"],parameters=stats.yeojohnson(df["Highly Negative Skew"])
-      df.skew()
+  
+         df["Highly Negative Skew_yeojohnson"],parameters=stats.yeojohnson(df["Highly Negative Skew"])
+         df.skew()
+         
   ![image](https://github.com/user-attachments/assets/25c02a61-44aa-48ba-aa35-1037cfd51f33)
-      from sklearn.preprocessing import QuantileTransformer
-      qt=QuantileTransformer(output_distribution='normal')
-      df["Moderate Negative Skew_1"]=qt.fit_transform(df[["Moderate Negative Skew"]])
-      df
+  
+         from sklearn.preprocessing import QuantileTransformer
+         qt=QuantileTransformer(output_distribution='normal')
+         df["Moderate Negative Skew_1"]=qt.fit_transform(df[["Moderate Negative Skew"]])
+         df
+         
   ![image](https://github.com/user-attachments/assets/2ea50fa9-1e69-468d-b70e-479123b686ec)
 
-      import seaborn as sns
-      import statsmodels.api as sm
-      import matplotlib.pyplot as plt
-      sm.qqplot(df["Moderate Negative Skew"],line='45')
-      plt.show()
+        import seaborn as sns
+        import statsmodels.api as sm
+        import matplotlib.pyplot as plt
+        sm.qqplot(df["Moderate Negative Skew"],line='45')
+        plt.show()
+        
  ![image](https://github.com/user-attachments/assets/5033d0f1-ed5d-4bce-9f1b-0387964e0ced)
-      from sklearn.preprocessing import QuantileTransformer
-      qt=QuantileTransformer(output_distribution='normal',n_quantiles=891)
-
-      df["Moderate Negative Skew"]=qt.fit_transform(df[["Moderate Negative Skew"]])
-
+     
       sm.qqplot(df["Moderate Negative Skew"],line='45')
       plt.show()
- ![image](https://github.com/user-attachments/assets/c4dcd6c7-b5aa-45a7-a982-acfae5415813)
-      
+
+ ![image](https://github.com/user-attachments/assets/85557efe-c8e5-4380-9d30-9aa5704a0ab0)
+       
+        from sklearn.preprocessing import QuantileTransformer
+        qt=QuantileTransformer(output_distribution='normal',n_quantiles=891)
+
+        df["Moderate Negative Skew"]=qt.fit_transform(df[["Moderate Negative Skew"]])
+
+        sm.qqplot(df["Moderate Negative Skew"],line='45')
+        plt.show()
+
+  ![image](https://github.com/user-attachments/assets/4c1e5a8b-3fe0-42d6-b8ff-4c7b5035b4ec)
+
       df["Highly Negative Skew_1"]=qt.fit_transform(df[["Highly Negative Skew"]])
       sm.qqplot(df["Highly Negative Skew"],line='45')
       plt.show()
+      
   ![image](https://github.com/user-attachments/assets/42a6342f-599c-4241-ad79-f174301ccc97)
+  
        dt=pd.read_csv("titanic_dataset.csv")
        dt 
 
   ![image](https://github.com/user-attachments/assets/f98cf4a5-1da5-468a-b8d1-335e371ce24c)
+  
        from sklearn.preprocessing import QuantileTransformer
        qt=QuantileTransformer(output_distribution='normal',n_quantiles=891)
        dt["Age_1"]=qt.fit_transform(dt[["Age"]])
        sm.qqplot(dt['Age'],line='45') 
        plt.show()
+       
   ![image](https://github.com/user-attachments/assets/998836f5-a7f5-4336-87d5-202027af8dfb)
+  
        sm.qqplot(df["Highly Negative Skew_1"],line='45')
        plt.show()
+       
   ![image](https://github.com/user-attachments/assets/6aa61325-d826-40a4-9cf3-90758069b888)
  
 # RESULT:
