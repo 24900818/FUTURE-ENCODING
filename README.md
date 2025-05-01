@@ -42,6 +42,7 @@ We use this categorical data encoding technique when the features are nominal(do
       e1=OrdinalEncoder(categories=[pm])
       e1.fit_transform(df[["ord_2"]])
 
+
   ![image](https://github.com/user-attachments/assets/1fe3f546-aa13-4a24-a955-cd19f21cbc8c)
   
       df['bo2']=e1.fit_transform(df[["ord_2"]])
@@ -83,14 +84,18 @@ We use this categorical data encoding technique when the features are nominal(do
 
       dfb=pd.concat([df,nd],axis=1)
       dfb
+      
   ![image](https://github.com/user-attachments/assets/6dbd119c-f3bc-4ef2-8758-8c690a073e76)
+  
          from category_encoders import TargetEncoder
          te=TargetEncoder()
          CC=df.copy()
          new=te.fit_transform(X=CC["City"],y=CC["Target"])
          CC=pd.concat([CC,new],axis=1)
-         CC 
+         CC
+         
   ![image](https://github.com/user-attachments/assets/e4784643-68d6-41ec-932d-1ea12bf6378c)
+  
          from scipy import stats
          import numpy as np
          df=pd.read_csv("Data_to_Transform.csv")
@@ -113,6 +118,7 @@ We use this categorical data encoding technique when the features are nominal(do
          np.sqrt(df["Highly Positive Skew"])
          
   ![image](https://github.com/user-attachments/assets/91682c94-f3f4-4c0a-ac2f-fa34ab2ae7d1)
+  
          np.square(df["Highly Positive Skew"])
          
   ![image](https://github.com/user-attachments/assets/4b865ff1-1c51-4ab9-aeee-bf14d3fd194a)
